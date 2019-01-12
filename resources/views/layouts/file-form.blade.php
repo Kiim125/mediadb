@@ -1,9 +1,9 @@
-<div class="container is-fluid box">
+<div class="container box">
     <div class="new-file">
         <form id="new-file-form" action="#" method="#" @submit.prevent="submitForm">
             <div class="field is-grouped">
                 <p class="control is-expanded">
-                    <input class="input" type="text" name="name" placeholder="File name" v-model="fileName" required>
+                    <input class="input" type="text" name="name" placeholder="Dateiname" v-model="fileName" required>
                 </p>
                 <div class="file is-info has-name">
                     <label class="file-label">
@@ -13,7 +13,7 @@
                                 <i class="fa fa-upload"></i>
                             </span>
                             <span class="file-label">
-                                Upload new file
+                                Neue Datei hinzufügen
                             </span>
                         </span>
                         <span class="file-name" v-if="attachment.name" v-html="attachment.name"></span>
@@ -21,7 +21,7 @@
                 </div>
                 <p class="control">
                     <button type="submit" class="button is-primary">
-                        Add new file
+                        Hochladen
                     </button>
                 </p>
             </div>

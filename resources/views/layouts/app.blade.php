@@ -11,7 +11,7 @@
         window.Laravel = { csrfToken: '{{ csrf_token() }}' }
     </script>
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'MediaDB') }}</title>
 
     <!-- Fonts -->
     <link rel="stylesheet" type="text/css" href="{{ asset('css/font-awesome.css') }}">
@@ -24,13 +24,13 @@
         <nav class="navbar is-info">
             <div class="navbar-brand">
                 <a class="navbar-item" href="{{ url('/') }}">
-                    <img src="https://bulma.io/images/bulma-logo-white.png" alt="File Hosting" width="112" height="28">
+                    MediaDB
                 </a>
             </div>
             <div class="navbar-menu">
                 <div class="navbar-start">
                     <a class="navbar-item" href="{{ url('/') }}">
-                        Home
+                        Startseite
                     </a>
                 </div>
                 <div class="navbar-end">

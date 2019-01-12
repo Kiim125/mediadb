@@ -1,19 +1,19 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container is-fluid box">
-        <div class="tabs is-centered is-large">
+    <div class="container box">
+        <div class="tabs is-large">
             <ul>
                 <li :class="{'is-active': isActive('image')}" @click="getFiles('image')">
                     <a>
                         <span class="icon is-small"><i class="fa fa-image"></i></span>
-                        <span>Pictures</span>
+                        <span>Bilder</span>
                     </a>
                 </li>
                 <li :class="{'is-active': isActive('audio')}" @click="getFiles('audio')">
                    <a>
                         <span class="icon is-small"><i class="fa fa-music"></i></span>
-                        <span>Music</span>
+                        <span>Musik</span>
                     </a>
                 </li>
                 <li :class="{'is-active': isActive('video')}" @click="getFiles('video')">
@@ -25,7 +25,7 @@
                 <li :class="{'is-active': isActive('document')}" @click="getFiles('document')">
                     <a>
                         <span class="icon is-small"><i class="fa fa-file-text-o"></i></span>
-                        <span>Documents</span>
+                        <span>Dokumente</span>
                     </a>
                 </li>
             </ul>

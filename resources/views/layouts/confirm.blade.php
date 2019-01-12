@@ -4,15 +4,15 @@
             <div class="modal-container">
 
                 <div class="modal-body">
-                    <h2>Are you sure?</h2>
+                    <h2>Bist du dir sicher?</h2>
                 </div>
 
                 <div class="modal-footer">
                     <button class="button" @click="deleteFile()">
-                        Confirm
+                        Bestätigen
                     </button>
                     <button class="button" @click="cancelDeleting()">
-                        Cancel
+                        Abbrechen
                     </button>
                 </div>
             </div>

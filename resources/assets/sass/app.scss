@@ -7,18 +7,16 @@ html, body {
     height: 100%;
 }
 
-body,
-#app {
-    background-color: #f5f5f5;
-}
-
 nav {
     margin-bottom: 20px;
-}
-
-nav .navbar-dropdown .navbar-item:hover {
-    background-color: #209cee;
-    color: #fff;
+    .navbar-dropdown{
+        .navbar-item {
+            &:hover {
+                background-color: #209cee;
+                color: #fff;
+            }
+        }
+    }
 }
 
 a {
@@ -31,10 +29,9 @@ a {
 
 #message {
     margin-bottom: 20px;
-}
-
-#message .delete {
-    margin: 5px 5px 0 0;
+    .delete {
+        margin: 5px 5px 0 0;
+    }
 }
 
 #new-file-form .file {
@@ -51,10 +48,9 @@ a {
     float: right;
     z-index: 1;
     margin: 5px 5px 0 0;
-}
-
-.delete-file:hover {
-    background-color: #f00;
+    &:hover {
+        background-color: #f00;
+    }
 }
 
 .card audio {

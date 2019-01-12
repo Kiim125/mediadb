@@ -1,5 +1,5 @@
 <transition name="fade">
-    <div class="container is-fluid" id="message" v-show="notification">
+    <div class="container" id="message" v-show="notification">
 
         <div class="notification is-success" v-cloak v-if="!anyError()">
             <button class="delete" @click="notification=false"></button>
