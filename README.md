@@ -1,11 +1,13 @@
 Repository clonen:
 
+```
 git clone https://github.com/Kiim125/mediadb.git
+```
 
 Compposer installieren:
-
+```
 composer install
-
+```
 
 .env Datei erstellen
 
