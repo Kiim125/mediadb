@@ -1,30 +1,24 @@
-<div class="container box">
-    <div class="new-file">
-        <form id="new-file-form" action="#" method="#" @submit.prevent="submitForm">
-            <div class="field is-grouped">
-                <p class="control is-expanded">
-                    <input class="input" type="text" name="name" placeholder="Dateiname" v-model="fileName" required>
-                </p>
-                <div class="file is-info has-name">
-                    <label class="file-label">
-                        <input class="file-input" type="file" ref="file" name="file" @change="addFile()">
-                        <span class="file-cta">
-                            <span class="file-icon">
-                                <i class="fa fa-upload"></i>
-                            </span>
-                            <span class="file-label">
-                                Neue Datei hinzufügen
-                            </span>
-                        </span>
-                        <span class="file-name" v-if="attachment.name" v-html="attachment.name"></span>
-                    </label>
+<form id="new-file-form" action="#" method="#" @submit.prevent="submitForm">
+    <div class="row mb-6">
+        <div class="col-10">
+            <div class="row">
+                <div class="col-6">
+                    <div class="input-group">
+                        <input type="text" class="form-control" aria-label="Dateiname" placeholder="Gewünschter Dateiname hier eintragen" v-model="fileName">
+                    </div>
                 </div>
-                <p class="control">
-                    <button type="submit" class="button is-primary">
-                        Hochladen
-                    </button>
-                </p>
+                <div class="col-6">
+                    <div class="input-group">
+                        <div class="custom-file">
+                            <input type="file" ref="file" name="file" class="custom-file-input" id="fileUploadLabel" aria-describedby="fileUpload" @change="addFile()">
+                            <label class="custom-file-label" for="fileUploadLabel"><span v-if="!attachment.name"><i class="fa fa-upload"></i> &emsp; Neue Datei hinzufügen</span><span class="file-name" v-if="attachment.name" v-html="attachment.name"></span></label>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </form>
+        </div>
+        <div class="col-2">
+            <button class="btn btn-primary w-100" type="submit" id="fileUpload">Hochladen</button>
+        </div>
     </div>
-</div>
+</form>

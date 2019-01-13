@@ -1,20 +1,12 @@
-<transition name="fade">
-    <div class="container" id="message" v-show="notification">
-
-        <div class="notification is-success" v-cloak v-if="!anyError()">
-            <button class="delete" @click="notification=false"></button>
-            <h1 class="subtitle">
-                @{{ message }}
-            </h1>
+<div class="row">
+    <div class="col-12" v-show="notification" id="message">
+        <div class="alert alert-success" role="alert" v-cloak v-if="!anyError()">
+            @{{ message }}
         </div>
-
-        <div class="notification is-danger" v-cloak v-if="anyError()">
-            <button class="delete" @click="notification=false"></button>
-
-            <h1 class="subtitle">
+        <div class="alert alert-danger" v-cloak v-if="anyError()">
+            <h4>
                 @{{ message }}
-            </h1>
-
+            </h4>
             <div class="content">
                 <ul v-for="error in errors">
                     <li v-for="error_item in error">
@@ -22,7 +14,10 @@
                     </li>
                 </ul>
             </div>
+            <button type="button" class="close" @click="notification=false">
+                <span aria-hidden="false">&times;</span>
+            </button>
         </div>
-
     </div>
-</transition>
+</div>
+

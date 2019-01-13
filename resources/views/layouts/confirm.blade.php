@@ -1,18 +1,24 @@
 <transition name="modal">
-    <div class="modal-mask" v-if="showConfirm" v-cloak>
-        <div class="modal-wrapper">
-            <div class="modal-container">
-
-                <div class="modal-body">
-                    <h2>Bist du dir sicher?</h2>
-                </div>
-
-                <div class="modal-footer">
-                    <button class="button" @click="deleteFile()">
-                        Bestätigen
+    <div class="modal-custom" id="confirmModal" v-if="showConfirm" v-cloak aria-labelledby="confirmModalLabel" @click="cancelDeleting()">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h4 class="modal-title" id="confirmModalLabel">Bist du dir sicher?</h4>
+                    <button type="button" class="close" @click="cancelDeleting()">
+                        <span aria-hidden="true">&times;</span>
                     </button>
-                    <button class="button" @click="cancelDeleting()">
-                        Abbrechen
+                </div>
+                <div class="modal-body">
+                    <p>
+                        Diese entscheidung lässt sich nicht widerrufen.
+                    </p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-success" @click="deleteFile()">
+                        Ja, löschen
+                    </button>
+                    <button type="button" class="btn btn-danger" @click="cancelDeleting()">
+                        Nein, lieber behalten
                     </button>
                 </div>
             </div>
