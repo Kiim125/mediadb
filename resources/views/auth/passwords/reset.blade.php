@@ -1,72 +1,57 @@
-@extends('layouts.app')
+@extends('app')
 
 @section('content')
-<div class="container">
-    <div class="columns">
-        <div class="column is-three-fifths is-offset-one-fifth">
-            <div class="box">
-                <h2 class="title">Reset Password</h2>
-
-                @if (session('status'))
-                    <article class="message is-success">
-                        <div class="message-body">
-                            {{ session('status') }}
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h2 class="title">Passwort zurücksetzen</h2>
+            <form method="POST" action="{{ route('password.request') }}">
+                {{ csrf_field() }}
+                <input type="hidden" class="input" name="token" value="{{ $token }}">
+                <div class="form-group">
+                    <label for="registerEmail">E-Mail-Adresse</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
                         </div>
-                    </article>
-                @endif
-
-                <form method="POST" action="{{ route('password.request') }}">
-                    {{ csrf_field() }}
-
-                    <input type="hidden" class="input" name="token" value="{{ $token }}">
-
-                    <div class="field">
-                        <p class="control has-icons-left has-icons-right">
-                            <input class="input {{ $errors->has('email') ? ' is-danger' : '' }}" type="email" name="email" value="{{ $email or old('email') }}" placeholder="E-Mail Address" required autofocus>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-envelope"></i>
-                            </span>
-                        </p>
+                        <input class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="registerEmail" value="{{ $email or old('email') }}" aria-describedby="registerEmailHelp" type="email" name="email" placeholder="E-Mail-Adresse">
                         @if ($errors->has('email'))
-                            <p class="help is-danger">
+                            <span class="invalid-feedback" role="alert">
                                 {{ $errors->first('email') }}
-                            </p>
+                            </span>
                         @endif
                     </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input {{ $errors->has('password') ? ' is-danger' : '' }}" type="password" name="password" placeholder="Password">
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-lock"></i>
-                            </span>
-                        </p>
+                    <small id="registerEmailHelp" class="form-text text-muted">Bitte gib deine E-Mail-Adresse an.</small>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Neues Passwort</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        </div>
+                        <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" aria-describedby="registerPasswordHelp" id="registerPassword" type="password" name="password" placeholder="Passwort">
                         @if ($errors->has('password'))
-                            <p class="help is-danger">
+                            <span class="invalid-feedback" role="alert">
                                 {{ $errors->first('password') }}
-                            </p>
+                            </span>
                         @endif
                     </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input id="password-confirm" type="password" class="input" name="password_confirmation" placeholder="Confirm password">
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-lock"></i>
-                            </span>
-                        </p>
+                    <small id="registerPasswordHelp" class="form-text text-muted">Bitte wähle ein sicheres Passwort mit mindestens 6 Zeichen.</small>
+                </div>
+                <div class="form-group">
+                    <label for="registerPassword">Neues Passwort bestätigen</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        </div>
+                        <input id="password-confirm" type="password" aria-describedby="registerPasswordConfirmHelp" class="form-control" name="password_confirmation" placeholder="Passwort bestätigen">
                     </div>
-
-                    <div class="field">
-                        <p class="control">
-                            <button class="button is-primary" type="submit">
-                                Reset Password
-                            </button>
-                        </p>
-                    </div>
-                </form>
-
-            </div>
+                    <small id="registerPasswordConfirmHelp" class="form-text text-muted">Bitte gebe dein Passwort nochmal ein.</small>
+                </div>
+                <button class="btn btn-primary" type="submit">
+                    Passwort zurücksetzen
+                </button>
+            </form>
         </div>
     </div>
-</div>
 
 @endsection

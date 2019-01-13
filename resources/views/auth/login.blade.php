@@ -1,68 +1,56 @@
-@extends('layouts.app')
+@extends('app')
 
 @section('content')
-<div class="container">
-    <div class="columns">
-        <div class="column is-three-fifths is-offset-one-fifth">
-            <div class="box">
-                <h2 class="title">Login</h2>
-
-                <form method="POST" action="{{ route('login') }}">
-                    {{ csrf_field() }}
-                    <div class="field">
-                        <p class="control has-icons-left has-icons-right">
-                            <input class="input {{ $errors->has('email') ? ' is-danger' : '' }}" type="email" name="email" placeholder="Email" value="{{ old('email') }}" required>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-envelope"></i>
-                            </span>
-                        </p>
+    <div class="row justify-content-center">
+        <div class="col-6">
+            <h2>Anmelden</h2>
+            <form method="POST" action="{{ route('login') }}">
+                {{ csrf_field() }}
+                <div class="form-group">
+                    <label for="loginEmail">E-Mail-Adresse</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-envelope"></i></span>
+                        </div>
+                        <input class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="loginEmail" type="email" aria-describedby="emailHelp" name="email" placeholder="E-Mail" value="{{ old('email') }}" required>
                         @if ($errors->has('email'))
-                            <p class="help is-danger">
+                            <span class="invalid-feedback" role="alert">
                                 {{ $errors->first('email') }}
-                            </p>
-                        @endif
-                    </div>
-                    <div class="field">
-                        <p class="control has-icons-left">
-                            <input class="input {{ $errors->has('password') ? ' is-danger' : '' }}" type="password" name="password" placeholder="Password" required>
-                            <span class="icon is-small is-left">
-                                <i class="fa fa-lock"></i>
                             </span>
-                        </p>
-                        @if ($errors->has('password'))
-                            <p class="help is-danger">
-                                {{ $errors->first('password') }}
-                            </p>
                         @endif
                     </div>
-                    <div class="field">
-                        <p class="control">
-                            <label class="checkbox">
-                                <input type="checkbox" {{ old('remember') ? 'checked' : '' }}>
-                                Remember me
-                            </label>
-                        </p>
+                    <small id="emailHelp" class="form-text text-muted">Wir würden deine E-Mail-Adresse niemals an dritte weitergeben.</small>
+                </div>
+                <div class="form-group">
+                    <label for="loginPassword">Passwort</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"><i class="fas fa-lock"></i></span>
+                        </div>
+                        <input class="form-control {{ $errors->has('password') ? ' is-invalid' : '' }}" type="password" aria-describedby="loginPasswordHelp" id="loginPassword" name="password" placeholder="Passwort" required>
+                        @if ($errors->has('password'))
+                            <span class="invalid-feedback" role="alert">
+                                {{ $errors->first('password') }}
+                            </span>
+                        @endif
                     </div>
-                    <div class="field">
-                        <p class="control">
-                            <a href="{{ route('password.request') }}">
-                                Forgot Your Password?
-                            </a>
-                        </p>
+                    <small id="loginPasswordHelp" class="form-text text-muted">Teile dein Passwort niemals mit anderen!</small>
+                </div>
+                <div class="row m-0 justify-content-between align-items-center mb-4">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" {{ old('remember') ? 'checked' : '' }} id="loginRemember" class="custom-control-input"><label class="custom-control-label" for="loginRemember">Erinnere dich an mich</label>
                     </div>
-                    <div class="field">
-                        <p class="control">
-                            <a class="button is-primary" href="{{ route('register') }}">
-                                Register
-                            </a>
-                            <button class="button is-primary">
-                                Login
-                            </button>
-                        </p>
-                    </div>
-                </form>
-            </div>
+                    <a class="btn btn-link" href="{{ route('password.request') }}">
+                        Passwort vergessen?
+                    </a>
+                </div>
+                <div class="row m-0 justify-content-between align-items-center">
+                    <button type="submit" class="btn btn-primary">Anmelden</button>
+                    <a class="btn btn-link" href="{{ route('register') }}">
+                        Ich bin neu hier
+                    </a>
+                </div>
+            </form>
         </div>
     </div>
-</div>
 @endsection
