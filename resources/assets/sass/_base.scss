@@ -130,5 +130,8 @@ html, body {
 }
 
 .empty-dir {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   min-height: rem(300px);
 }

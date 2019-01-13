@@ -5,23 +5,23 @@
         <div class="col-12">
             <ul class="nav nav-tabs nav-fill mb-3">
                 <li class="nav-item">
-                    <a class="nav-link" :class="{'active': isActive('image')}" @click="getFiles('image')">Bilder</a>
+                    <a class="nav-link" href="#" :class="{'active': isActive('image')}" @click="getFiles('image')">Bilder</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" :class="{'active': isActive('audio')}" @click="getFiles('audio')">Musik</a>
+                    <a class="nav-link" href="#" :class="{'active': isActive('audio')}" @click="getFiles('audio')">Musik</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" :class="{'active': isActive('video')}" @click="getFiles('video')">Videos</a>
+                    <a class="nav-link" href="#" :class="{'active': isActive('video')}" @click="getFiles('video')">Videos</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" :class="{'active': isActive('document')}" @click="getFiles('document')">Dokumente</a>
+                    <a class="nav-link" href="#" :class="{'active': isActive('document')}" @click="getFiles('document')">Dokumente</a>
                 </li>
             </ul>
         </div>
     </div>
     <div class="row">
-        <div class="col-12 d-flex justify-content-center align-items-center" v-if="pagination.total == 0" v-cloak>
-            <div class="empty-dir">
+        <div class="col-12 empty-dir" v-if="pagination.total == 0" v-cloak>
+            <div>
                 <i class="fa fa-folder-open"></i>
                 Dieser Ordner ist leer!
             </div>
